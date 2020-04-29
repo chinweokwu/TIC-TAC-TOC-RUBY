@@ -1,19 +1,46 @@
-puts 'Hello! welcome to TIC-TAC-TOC game'
+class TicTacToe
+  def intialize
+    greetings
+    start_game
+    play_again
+  end
 
-puts '  |  |  '
-puts '--------'
-puts '  |  |  '
-puts '--------'
-puts '  |  |  '
+  # when the game is started we greet the players
+  def greetings
+    puts 'Hello! welcome to TIC-TAC-TOC game'
 
-puts 'This is a game played by two players "X" & "O"'
+    puts '  |  |  '
+    puts '--------'
+    puts '  |  |  '
+    puts '--------'
+    puts '  |  |  '
+    puts 'This is a game played by two players "X" & "O"'
+    puts 'Enter player-one name:'
+    player1 = gets.chomp
+    puts 'What is player_two name:'
+    player2 = gets.chomp
+    puts " Hi #{player1} & #{player2}"
+  end
 
-puts 'What is player-one name:'
-player1 = gets.chomp
-puts 'What is player_two name:'
-player2 = gets.chomp
+  #  After greeting the players we start the game
+  def start_game
+    # this would conatin the game logic
+    puts 'game logic'
+  end
 
-puts "#{player1}: where do you want to go? 0-8"
-puts "#{player1} place your token 'X'"
-puts "#{player2}: where do you want to go? 0-8"
-puts "#{player2} place your token 'O'"
+  # we ask if the user wi=ould want to play again
+  def play_again
+    puts 'Would you love to play again? Y/N'
+    result = gets.chomp.upcase
+
+    if result == 'Y'
+      start_game
+    elsif result == 'N'
+      puts 'Thank you for playing'
+    else
+      puts 'Invalid inputs chose either Y/N'
+    end
+  end
+end
+# k = TicTacToe.new
+# k.intialize
