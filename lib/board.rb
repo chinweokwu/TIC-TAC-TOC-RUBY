@@ -12,9 +12,11 @@ class Board
     puts " ----------- "
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
+
   def player_move(index,token)
     @board[index] = token
   end
+
   def position_taken?(index)
     if (@board[index] == " ") || (@board[index] == "") || (@board[index] == nil)
        return false 
