@@ -1,3 +1,5 @@
+require_relative '../lib/player_logic.rb'
+
 class TicTacToe
   def initialize
     greetings
