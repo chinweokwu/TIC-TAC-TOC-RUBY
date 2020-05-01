@@ -1,3 +1,5 @@
+require_relative '../lib/player_logic.rb'
+
 class TicTacToe
   def initialize
     greetings
@@ -39,7 +41,7 @@ class TicTacToe
   end
 
   # we ask if the user wi=ould want to play again
-  def play_again 
+  def play_again
     result = ''
     until result == 'Y' || result == 'N'
       puts 'Would you like to play again? (Y/N): '
