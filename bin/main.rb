@@ -15,11 +15,8 @@ puts '--------'
 puts '  |  |  '
 
 puts 'This is a game played by two players "X" & "O"'
-
 puts 'Let start the game'
-
 puts 'Enter player-one name:'
-
 player1 = Player.new(gets.chomp)
 
 puts 'Enter player_two name:'
