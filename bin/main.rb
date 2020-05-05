@@ -14,7 +14,7 @@ team1 = gets.chomp
 puts 'Enter player_two name:'
 team2 = gets.chomp
 
-player1 =Player.new(team1)
+player1 = Player.new(team1)
 player2 = Player.new(team2)
 
 if player1 == player2
@@ -71,7 +71,7 @@ loop do
   end
 
   puts "The current score is #{player1.score}:#{player2.score}."
-  puts "Would you like to play again? (y/n): "
+  puts 'Would you like to play again? (y/n): '
   play_again = gets.chomp
   break if play_again == 'n'
 end
