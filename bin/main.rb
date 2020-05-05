@@ -1,78 +1,125 @@
-require_relative '../lib/game.rb'
-require_relative '../lib/board.rb'
+require_relative('../lib/player.rb')
 
-class TicTacToe
-  def initialize
-    greetings
+require_relative('../lib/board.rb')
 
-    game_loop
-  end
+puts 'Hello! welcome to TIC-TAC-TOC game'
 
-  # when the game is started we greet the players
+puts '  |  |  '
 
-  def greetings
-    puts 'Hello! welcome to TIC-TAC-TOC game'
+puts '--------'
 
-    puts '  |  |  '
+puts '  |  |  '
 
-    puts '--------'
+puts '--------'
 
-    puts '  |  |  '
+puts '  |  |  '
 
-    puts '--------'
+puts 'This is a game played by two players "X" & "O"'
 
-    puts '  |  |  '
+puts 'Let start the game'
 
-    puts 'This is a game played by two players "X" & "O"'
+puts 'Enter player-one name:'
 
-    puts 'Let start the game!'
+player1 = Player.new(gets.chomp)
 
-    puts 'Enter player-one name:'
+puts 'Enter player_two name:'
 
-    player1 = gets.chomp
+player2 = Player.new(gets.chomp)
 
-    puts 'Enter player_two name:'
+if player1 == player2
 
-    player2 = gets.chomp
+  puts ' please Enter different name:'
 
-    puts " Hi #{player1} & #{player2}"
-  end
+  player2 = Player.new(gets.chomp)
 
-  #  After greeting the players we start the game
+else
 
-  def start_game
-    board = Board.new
-    player = Player.new
-    game = Game.new
-  end
+  puts "Hi #{player1} & #{player2}"
 
-  def game_loop
-    start_game while play_again
-  end
+end
 
-  # we ask if the user wi=ould want to play again
+loop do
+  board = Board.new
 
-  def play_again
+  loop do
     loop do
-      puts 'Would you like to play again? (Y/N): '
+      print "#{player1.name}, what number you choose: "
 
-      result = gets.chomp.upcase
+      move = Integer(gets.chomp, 10)
 
-      if result == 'Y'
+      if board.valid?([1, move])
 
-        return true
+        board.update([1, move])
 
-      elsif result == 'N'
+        puts(board.show)
 
-        return false
+        break
 
-      else 'wrong inputs'
+      else
+
+        puts('Wrong move!')
 
       end
     end
+
+    if board.win?
+
+      puts("#{player1.name}, wins!")
+
+      player1.change_score
+
+      break
+
+    elsif board.draw?
+
+      puts("It's a draw!")
+
+      break
+
+    end
+
+    loop do
+      print "#{player2.name}, what number you choose: "
+
+      move = Integer(gets.chomp, 10)
+
+      if board.valid?([2, move])
+
+        board.update([2, move])
+
+        puts(board.show)
+
+        break
+
+      else
+
+        puts('Wrong move!')
+
+      end
+    end
+
+    if board.win?
+
+      puts("#{player2.name}, wins!")
+
+      player2.change_score
+
+      break
+
+    elsif board.draw?
+
+      puts("It's a draw!")
+
+      break
+
+    end
   end
+
+  puts "The current score is #{player1.score}:#{player2.score}."
+
+  puts "Type 'n' if you don't want to continue playing, or any input to play again."
+
+  play_again = gets.chomp
+
+  break if play_again == 'n'
 end
-
-ttt = TicTacToe.new
-
-ttt.initialize
