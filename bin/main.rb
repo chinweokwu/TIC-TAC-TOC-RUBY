@@ -1,18 +1,15 @@
 require_relative('../lib/player.rb')
-
 require_relative('../lib/board.rb')
 
 puts 'Hello! welcome to TIC-TAC-TOC game'
+puts ' 1 | 2 | 3 '
+puts '--------'
 
-puts '  |  |  '
+puts ' 4 | 5 | 6 '
 
 puts '--------'
 
-puts '  |  |  '
-
-puts '--------'
-
-puts '  |  |  '
+puts ' 7 | 8 | 9 '
 
 puts 'This is a game played by two players "X" & "O"'
 
@@ -26,31 +23,18 @@ puts 'Enter player_two name:'
 
 team2 = gets.chomp
 
-player1 = Player.new(team1)
+while team1.is_a?(Integer) || team1.is_a?(Integer)
+end
 
+while team1 == team2
+  puts ' please Enter different name:'
+  team2 = gets.chomp
+end
+
+
+player1 = Player.new(team1)
 player2 = Player.new(team2)
 
-if player1.is_a? & player2.is_a?
-
-  # input is valid
-
-else
-
-  puts 'Invalid Input. Please Try Again'
-
-end
-
-if player1 == player2
-
-  puts ' please Enter different name:'
-
-  player2 = Player.new(gets.chomp)
-
-else
-
-  puts "Hi #{team1} & #{team2}"
-
-end
 
 loop do
   board = Board.new
