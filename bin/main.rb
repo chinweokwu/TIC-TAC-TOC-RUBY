@@ -4,28 +4,17 @@ require_relative('../lib/board.rb')
 puts 'Hello! welcome to TIC-TAC-TOC game'
 puts ' 1 | 2 | 3 '
 puts '--------'
-
 puts ' 4 | 5 | 6 '
-
 puts '--------'
-
 puts ' 7 | 8 | 9 '
-
 puts 'This is a game played by two players "X" & "O"'
-
 puts 'Let start the game'
-
 puts 'Enter player-one name:'
-
 team1 = gets.chomp
-
 puts 'Enter player_two name:'
-
 team2 = gets.chomp
-
 while team1.is_a?(Integer) || team1.is_a?(Integer)
 end
-
 while team1 == team2
   puts ' please Enter different name:'
   team2 = gets.chomp
@@ -39,7 +28,7 @@ loop do
 
   loop do
     loop do
-      print "#{player1.name}, what number you choose: "
+      print "#{player1.name}, Chose a number from (1-9): "
 
       move = Integer(gets.chomp, 10)
 
@@ -53,7 +42,7 @@ loop do
 
       else
 
-        puts('Wrong move!')
+        puts('position taken or wrong number!')
 
       end
     end
@@ -75,7 +64,7 @@ loop do
     end
 
     loop do
-      print "#{player2.name}, what number you choose: "
+      print "#{player2.name}, Chose a number from (1-9)"
 
       move = Integer(gets.chomp, 10)
 
@@ -89,7 +78,7 @@ loop do
 
       else
 
-        puts('Wrong move!')
+        puts('position taken or wrong \n----------\nnumber!')
 
       end
     end
