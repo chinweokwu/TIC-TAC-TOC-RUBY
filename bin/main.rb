@@ -19,7 +19,7 @@ while team1 == team2
   puts ' please Enter different name:'
   team2 = gets.chomp
 end
-
+puts "#{team1.upcase} is 'X' while #{team2.upcase} is 'O' "
 player1 = Player.new(team1)
 player2 = Player.new(team2)
 
