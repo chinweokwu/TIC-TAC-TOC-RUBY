@@ -31,10 +31,8 @@ while team1 == team2
   team2 = gets.chomp
 end
 
-
 player1 = Player.new(team1)
 player2 = Player.new(team2)
-
 
 loop do
   board = Board.new
