@@ -7,7 +7,7 @@ rescue TypeError, ArgumentError
   false
 end
 def empty_string(strings)
-  if strings == " "
+  if (strings == " ") || (strings == "") || (strings == nil)
     true
   end
 end
@@ -16,6 +16,7 @@ def player_indexs(str)
     true
   end
 end
+
 puts 'Hello! welcome to TIC-TAC-TOC game'
 puts ' 1 | 2 | 3 '
 puts '--------'
@@ -26,13 +27,13 @@ puts 'This is a game played by two players "X" & "O"'
 puts 'Let start the game'
 puts 'Enter player-one name:'
 team1 = gets.chomp
-while numeric?(team1)
+while numeric?(team1) || empty_string(team1)
   puts 'Enter player name as string'
   team1 = gets.chomp
 end
 puts 'Enter player_two name:'
 team2 = gets.chomp
-while numeric?(team2)
+while numeric?(team2) || empty_string(team2)
   puts 'Enter player name as string'
   team2 = gets.chomp
 end
