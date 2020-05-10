@@ -1,20 +1,18 @@
 require_relative('../lib/player.rb')
 require_relative('../lib/board.rb')
-# Avoid the use of double negation (!!).
+# rubocop: disable Style/DoubleNegation
 def numeric?(string)
   !!Kernel.Float(string)
 rescue TypeError, ArgumentError
   false
 end
+
 def empty_string(strings)
-  if (strings == " ") || (strings == "") || (strings == nil)
-    true
-  end
+  true if (strings == ' ') || (strings == '') || strings.nil?
 end
+
 def player_indexs(str)
-  if str.is_a? Numeric
-    true
-  end
+  true if str.is_a? Numeric
 end
 
 puts 'Hello! welcome to TIC-TAC-TOC game'
@@ -51,18 +49,18 @@ loop do
   loop do
     loop do
       print "#{player1.name}, Chose a number from (1-9): "
-      
-        player_index = gets.chomp
-        if numeric?(player_index)
-        move = player_index.to_i
-       if board.valid?([1, move]) 
+
+      player_index = gets.chomp
+      next unless numeric?(player_index)
+
+      move = player_index.to_i
+      if board.valid?([1, move])
         board.update([1, move])
         puts(board.show)
         break
       else
         puts('position taken or wrong number!')
       end
-    end
     end
 
     if board.win?
@@ -77,17 +75,17 @@ loop do
     loop do
       print "#{player2.name}, Chose a number from (1-9): "
       player_index = gets.chomp
-      if numeric?(player_index)
+      next unless numeric?(player_index)
+
       move = player_index.to_i
 
-       if board.valid?([2, move])
+      if board.valid?([2, move])
         board.update([2, move])
         puts(board.show)
         break
       else
         puts('position taken or wrong number!')
       end
-    end
     end
 
     if board.win?
@@ -106,3 +104,5 @@ loop do
   play_again = gets.chomp
   break if play_again == 'n'
 end
+
+# rubocop: enable Style/DoubleNegation
