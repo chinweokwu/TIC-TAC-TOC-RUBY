@@ -75,7 +75,7 @@ loop do
     end
 
     loop do
-      print "#{player2.name}, Chose a number from (1-9)"
+      print "#{player2.name}, Chose a number from (1-9): "
       player_index = gets.chomp
       if numeric?(player_index)
       move = player_index.to_i
@@ -85,7 +85,7 @@ loop do
         puts(board.show)
         break
       else
-        puts('position taken or wrong \n----------\nnumber!')
+        puts('position taken or wrong number!')
       end
     end
     end
