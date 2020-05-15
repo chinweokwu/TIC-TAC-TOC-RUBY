@@ -166,7 +166,7 @@ class Board
 
         when 9
 
-          printed_board[28] = 'O'
+          printed_board[31] = 'O'
 
         end
 
