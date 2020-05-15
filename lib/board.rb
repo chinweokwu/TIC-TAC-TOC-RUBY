@@ -80,7 +80,7 @@ class Board
   end
 
   def show
-    printed_board = "   |   |   \n----------\n   |   |   \n----------\n   |   |   "
+    printed_board = "   |   |  \n   |   |  \n   |   |  "
 
     i = 1
 
@@ -92,39 +92,39 @@ class Board
 
         when 1
 
-          printed_board[0] = 'X'
+          printed_board[1] = 'X'
 
         when 2
 
-          printed_board[4] = 'X'
+          printed_board[5] = 'X'
 
         when 3
 
-          printed_board[8] = 'X'
+          printed_board[9] = 'X'
 
         when 4
 
-          printed_board[21] = 'X'
+          printed_board[12] = 'X'
 
         when 5
 
-          printed_board[25] = 'X'
+          printed_board[16] = 'X'
 
         when 6
 
-          printed_board[29] = 'X'
+          printed_board[20] = 'X'
 
         when 7
 
-          printed_board[42] = 'X'
+          printed_board[23] = 'X'
 
         when 8
 
-          printed_board[46] = 'X'
+          printed_board[27] = 'X'
 
         when 9
 
-          printed_board[50] = 'X'
+          printed_board[31] = 'X'
 
         end
 
@@ -134,39 +134,39 @@ class Board
 
         when 1
 
-          printed_board[0] = 'O'
+          printed_board[1] = 'O'
 
         when 2
 
-          printed_board[4] = 'O'
+          printed_board[5] = 'O'
 
         when 3
 
-          printed_board[8] = 'O'
+          printed_board[9] = 'O'
 
         when 4
 
-          printed_board[21] = 'O'
+          printed_board[12] = 'O'
 
         when 5
 
-          printed_board[25] = 'O'
+          printed_board[16] = 'O'
 
         when 6
 
-          printed_board[29] = 'O'
+          printed_board[20] = 'O'
 
         when 7
 
-          printed_board[42] = 'O'
+          printed_board[23] = 'O'
 
         when 8
 
-          printed_board[46] = 'O'
+          printed_board[27] = 'O'
 
         when 9
 
-          printed_board[50] = 'O'
+          printed_board[28] = 'O'
 
         end
 
