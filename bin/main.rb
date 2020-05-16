@@ -1,58 +1,108 @@
-class TicTacToe
-  def initialize
-    greetings
-    game_loop
-  end
-
-  # when the game is started we greet the players
-  def greetings
-    puts 'Hello! welcome to TIC-TAC-TOC game'
-    puts '  |  |  '
-    puts '--------'
-    puts '  |  |  '
-    puts '--------'
-    puts '  |  |  '
-    puts 'This is a game played by two players "X" & "O"'
-    puts 'Let start the game!'
-    puts 'Enter player-one name:'
-    player1 = gets.chomp
-    puts 'What is player_two name:'
-    player2 = gets.chomp
-    puts " Hi #{player1} & #{player2}"
-  end
-
-  #  After greeting the players we start the game
-  def start_game
-    # game logic
-    puts 'game tells which player turn it is'
-    puts 'game asks player to select from available moves'
-    puts 'game informs player if selected move is invalid'
-    puts 'game displays board after player move'
-    puts 'game informs player if selected move is a winning move'
-    puts 'game informs player if selected move is a draw move'
-    puts "game repeats all actions for next player's move"
-  end
-
-  def game_loop
-    start_game
-    play_again
-  end
-
-  # we ask if the user wi=ould want to play again
-  def play_again 
-    result = ''
-    until result == 'Y' || result == 'N'
-      puts 'Would you like to play again? (Y/N): '
-      result = gets.chomp.upcase
-    end
-    case result
-    when 'Y'
-      start_game
-    when 'N'
-      puts 'Thank you for playing!'
-    end
-  end
+require_relative('../lib/player.rb')
+require_relative('../lib/board.rb')
+# rubocop: disable Style/DoubleNegation
+def numeric?(string)
+  !!Kernel.Float(string)
+rescue TypeError, ArgumentError
+  false
 end
 
-ttt = TicTacToe.new
-ttt.initialize
+def empty_string(strings)
+  true if (strings == ' ') || (strings == '') || strings.nil?
+end
+
+def player_indexs(str)
+  true if str.is_a? Numeric
+end
+
+puts 'Hello! welcome to TIC-TAC-TOC game'
+puts ' 1 | 2 | 3 '
+puts '--------'
+puts ' 4 | 5 | 6 '
+puts '--------'
+puts ' 7 | 8 | 9 '
+puts 'This is a game played by two players "X" & "O"'
+puts 'Let start the game'
+puts 'Enter player-one name:'
+team1 = gets.chomp
+while numeric?(team1) || empty_string(team1)
+  puts 'Enter player name as string'
+  team1 = gets.chomp
+end
+puts 'Enter player_two name:'
+team2 = gets.chomp
+while numeric?(team2) || empty_string(team2)
+  puts 'Enter player name as string'
+  team2 = gets.chomp
+end
+while team1 == team2
+  puts ' please Enter different name:'
+  team2 = gets.chomp
+end
+puts "#{team1.upcase} is 'X' while #{team2.upcase} is 'O' "
+player1 = Player.new(team1)
+player2 = Player.new(team2)
+
+loop do
+  board = Board.new
+
+  loop do
+    loop do
+      print "#{player1.name}, Chose a number from (1-9): "
+
+      player_index = gets.chomp
+      next unless numeric?(player_index)
+
+      move = player_index.to_i
+      if board.valid?([1, move])
+        board.update([1, move])
+        puts(board.show)
+        break
+      else
+        puts('position taken or wrong number!')
+      end
+    end
+
+    if board.win?
+      puts("#{player1.name}, wins!")
+      player1.change_score
+      break
+    elsif board.draw?
+      puts("It's a draw!")
+      break
+    end
+
+    loop do
+      print "#{player2.name}, Chose a number from (1-9): "
+      player_index = gets.chomp
+      next unless numeric?(player_index)
+
+      move = player_index.to_i
+
+      if board.valid?([2, move])
+        board.update([2, move])
+        puts(board.show)
+        break
+      else
+        puts('position taken or wrong number!')
+      end
+    end
+
+    if board.win?
+      puts("#{player2.name}, wins!")
+      player2.change_score
+      break
+    elsif board.draw?
+      puts("It's a draw!")
+      break
+    end
+  end
+
+  puts "The current score is #{player1.score}:#{player2.score}."
+  puts 'Would you like to play again? (y/n): '
+
+  play_again = gets.chomp
+  break if play_again == 'n'
+end
+
+# rubocop: enable Style/DoubleNegation
