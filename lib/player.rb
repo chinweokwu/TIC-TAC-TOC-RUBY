@@ -10,3 +10,4 @@ class Player
     @score += 1
   end
 end
+

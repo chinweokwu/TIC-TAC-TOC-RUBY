@@ -179,3 +179,4 @@ class Board
     printed_board
   end
 end
+
