@@ -53,8 +53,8 @@ RSpec.describe(Board) do
       end
     end
 
-    context 'when draw condition is met' do
-      it 'returns true' do
+    context 'when draw condition is not met' do
+      it 'returns false' do
         board.board.push([1, 1], [2, 2], [1, 3], [2, 9], [1, 4], [1, 5], [2, 6], [1, 7])
         expect(board.draw?).to(eq(false))
       end
