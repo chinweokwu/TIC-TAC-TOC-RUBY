@@ -13,13 +13,13 @@ class Namevalidation
   end
 
   def same_name(team1, team2)
-    while team1 == team2
+    if team1 == team2
       return 'please Enter different name:'
     end
   end
 
   def name_valid(name_num, strings)
-    while numeric?(name_num) || empty_string(strings)
+    if numeric?(name_num) || empty_string(strings)
       return 'Enter player name as string'
     end
   end
