@@ -9,7 +9,7 @@ RSpec.describe(Board) do
         expect(board.valid?([1, 2])).to(eq(true))
       end
 
-      it 'returns false if this input is taken' do
+      it 'returns false if this input is not taken' do
         board.board.push([1, 2])
         expect(board.valid?([1, 2])).to(eq(false))
       end
@@ -65,7 +65,7 @@ RSpec.describe(Board) do
     context 'when player one gives an input of 1' do
       it 'returns a string displaying the board with an X on the first position' do
         board.board.push([1, 1])
-        expect(board.show).to(eq(" X  |   |  \n   |   |  \n   |   |  "))
+        expect(board.show).to(eq(" X |   |  \n   |   |  \n   |   |  "))
       end
     end
   end
